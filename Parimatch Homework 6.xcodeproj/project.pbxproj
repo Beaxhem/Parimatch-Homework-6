@@ -3,29 +3,40 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		889CDDF825DC811C000A5EC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDDF725DC811C000A5EC8 /* AppDelegate.swift */; };
 		889CDDFA25DC811C000A5EC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDDF925DC811C000A5EC8 /* SceneDelegate.swift */; };
-		889CDDFC25DC811C000A5EC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDDFB25DC811C000A5EC8 /* ViewController.swift */; };
+		889CDDFC25DC811C000A5EC8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDDFB25DC811C000A5EC8 /* HomeViewController.swift */; };
 		889CDDFF25DC811C000A5EC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889CDDFD25DC811C000A5EC8 /* Main.storyboard */; };
 		889CDE0225DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE0025DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld */; };
 		889CDE0425DC811F000A5EC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889CDE0325DC811F000A5EC8 /* Assets.xcassets */; };
 		889CDE0725DC811F000A5EC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889CDE0525DC811F000A5EC8 /* LaunchScreen.storyboard */; };
+		889CDE1725DC816B000A5EC8 /* DefaultAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE1625DC816B000A5EC8 /* DefaultAuthManager.swift */; };
+		889CDE1C25DC82B6000A5EC8 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 889CDE1B25DC82B6000A5EC8 /* SwiftKeychainWrapper */; };
+		889CDE1F25DC82FF000A5EC8 /* KeychainWrapperKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE1E25DC82FF000A5EC8 /* KeychainWrapperKey.swift */; };
+		889CDE2225DC8430000A5EC8 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE2125DC8430000A5EC8 /* AuthorizationViewController.swift */; };
+		889CDE2A25DC8513000A5EC8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE2925DC8513000A5EC8 /* AuthManager.swift */; };
+		889CDE2E25DC8572000A5EC8 /* Instantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE2D25DC8572000A5EC8 /* Instantiatable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		889CDDF425DC811C000A5EC8 /* Parimatch Homework 6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Parimatch Homework 6.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		889CDDF725DC811C000A5EC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		889CDDF925DC811C000A5EC8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		889CDDFB25DC811C000A5EC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		889CDDFB25DC811C000A5EC8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		889CDDFE25DC811C000A5EC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		889CDE0125DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Parimatch_Homework_6.xcdatamodel; sourceTree = "<group>"; };
 		889CDE0325DC811F000A5EC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		889CDE0625DC811F000A5EC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		889CDE0825DC811F000A5EC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		889CDE1625DC816B000A5EC8 /* DefaultAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthManager.swift; sourceTree = "<group>"; };
+		889CDE1E25DC82FF000A5EC8 /* KeychainWrapperKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapperKey.swift; sourceTree = "<group>"; };
+		889CDE2125DC8430000A5EC8 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		889CDE2925DC8513000A5EC8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		889CDE2D25DC8572000A5EC8 /* Instantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instantiatable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889CDE1C25DC82B6000A5EC8 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,9 +70,11 @@
 		889CDDF625DC811C000A5EC8 /* Parimatch Homework 6 */ = {
 			isa = PBXGroup;
 			children = (
-				889CDDF725DC811C000A5EC8 /* AppDelegate.swift */,
-				889CDDF925DC811C000A5EC8 /* SceneDelegate.swift */,
-				889CDDFB25DC811C000A5EC8 /* ViewController.swift */,
+				889CDE1325DC813C000A5EC8 /* Application */,
+				889CDE1225DC8134000A5EC8 /* Extension */,
+				889CDE2625DC84BF000A5EC8 /* Protocols */,
+				889CDE0F25DC8129000A5EC8 /* Model */,
+				889CDE1125DC812E000A5EC8 /* Controller */,
 				889CDDFD25DC811C000A5EC8 /* Main.storyboard */,
 				889CDE0325DC811F000A5EC8 /* Assets.xcassets */,
 				889CDE0525DC811F000A5EC8 /* LaunchScreen.storyboard */,
@@ -68,6 +82,57 @@
 				889CDE0025DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld */,
 			);
 			path = "Parimatch Homework 6";
+			sourceTree = "<group>";
+		};
+		889CDE0F25DC8129000A5EC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				889CDE1525DC815E000A5EC8 /* AuthManager */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		889CDE1125DC812E000A5EC8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				889CDDFB25DC811C000A5EC8 /* HomeViewController.swift */,
+				889CDE2125DC8430000A5EC8 /* AuthorizationViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		889CDE1225DC8134000A5EC8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				889CDE1E25DC82FF000A5EC8 /* KeychainWrapperKey.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		889CDE1325DC813C000A5EC8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				889CDDF725DC811C000A5EC8 /* AppDelegate.swift */,
+				889CDDF925DC811C000A5EC8 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		889CDE1525DC815E000A5EC8 /* AuthManager */ = {
+			isa = PBXGroup;
+			children = (
+				889CDE1625DC816B000A5EC8 /* DefaultAuthManager.swift */,
+			);
+			path = AuthManager;
+			sourceTree = "<group>";
+		};
+		889CDE2625DC84BF000A5EC8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				889CDE2925DC8513000A5EC8 /* AuthManager.swift */,
+				889CDE2D25DC8572000A5EC8 /* Instantiatable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,12 +145,16 @@
 				889CDDF025DC811C000A5EC8 /* Sources */,
 				889CDDF125DC811C000A5EC8 /* Frameworks */,
 				889CDDF225DC811C000A5EC8 /* Resources */,
+				889CDE2425DC8461000A5EC8 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Parimatch Homework 6";
+			packageProductDependencies = (
+				889CDE1B25DC82B6000A5EC8 /* SwiftKeychainWrapper */,
+			);
 			productName = "Parimatch Homework 6";
 			productReference = 889CDDF425DC811C000A5EC8 /* Parimatch Homework 6.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +182,9 @@
 				Base,
 			);
 			mainGroup = 889CDDEB25DC811C000A5EC8;
+			packageReferences = (
+				889CDE1A25DC82B6000A5EC8 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = 889CDDF525DC811C000A5EC8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -135,15 +207,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		889CDE2425DC8461000A5EC8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		889CDDF025DC811C000A5EC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				889CDDFC25DC811C000A5EC8 /* ViewController.swift in Sources */,
+				889CDE2225DC8430000A5EC8 /* AuthorizationViewController.swift in Sources */,
+				889CDE2A25DC8513000A5EC8 /* AuthManager.swift in Sources */,
+				889CDDFC25DC811C000A5EC8 /* HomeViewController.swift in Sources */,
 				889CDDF825DC811C000A5EC8 /* AppDelegate.swift in Sources */,
 				889CDE0225DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld in Sources */,
+				889CDE2E25DC8572000A5EC8 /* Instantiatable.swift in Sources */,
+				889CDE1F25DC82FF000A5EC8 /* KeychainWrapperKey.swift in Sources */,
 				889CDDFA25DC811C000A5EC8 /* SceneDelegate.swift in Sources */,
+				889CDE1725DC816B000A5EC8 /* DefaultAuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +442,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		889CDE1A25DC82B6000A5EC8 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		889CDE1B25DC82B6000A5EC8 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 889CDE1A25DC82B6000A5EC8 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		889CDE0025DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld */ = {
