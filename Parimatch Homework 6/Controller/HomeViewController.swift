@@ -14,11 +14,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
         if !authManager.isLoggedIn() {
             guard let authViewController = AuthorizationViewController.instantiate() else {
                 return
             }
-            
+            authViewController.authManager = authManager
             authViewController.modalPresentationStyle = .fullScreen
 
             navigationController?.present(authViewController, animated: true, completion: nil)

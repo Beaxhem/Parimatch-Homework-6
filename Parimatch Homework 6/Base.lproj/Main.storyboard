@@ -11,7 +11,6 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Parimatch_Homework_6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -21,6 +20,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="pJr-G2-PC3"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-9" y="139"/>
         </scene>
@@ -36,7 +36,7 @@
                                 <rect key="frame" x="138.5" y="433" width="137" height="30"/>
                                 <state key="normal" title="Sign in using Github"/>
                                 <connections>
-                                    <action selector="signin" destination="K2S-ql-9mq" eventType="touchUpInside" id="q5B-26-42E"/>
+                                    <action selector="githubAuthorization" destination="K2S-ql-9mq" eventType="touchUpInside" id="bmY-4P-Too"/>
                                 </connections>
                             </button>
                         </subviews>

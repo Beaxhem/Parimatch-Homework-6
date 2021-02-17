@@ -15,11 +15,18 @@
 		889CDE0425DC811F000A5EC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889CDE0325DC811F000A5EC8 /* Assets.xcassets */; };
 		889CDE0725DC811F000A5EC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889CDE0525DC811F000A5EC8 /* LaunchScreen.storyboard */; };
 		889CDE1725DC816B000A5EC8 /* DefaultAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE1625DC816B000A5EC8 /* DefaultAuthManager.swift */; };
-		889CDE1C25DC82B6000A5EC8 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 889CDE1B25DC82B6000A5EC8 /* SwiftKeychainWrapper */; };
-		889CDE1F25DC82FF000A5EC8 /* KeychainWrapperKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE1E25DC82FF000A5EC8 /* KeychainWrapperKey.swift */; };
+		889CDE1F25DC82FF000A5EC8 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE1E25DC82FF000A5EC8 /* Keychain.swift */; };
 		889CDE2225DC8430000A5EC8 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE2125DC8430000A5EC8 /* AuthorizationViewController.swift */; };
 		889CDE2A25DC8513000A5EC8 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE2925DC8513000A5EC8 /* AuthManager.swift */; };
 		889CDE2E25DC8572000A5EC8 /* Instantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE2D25DC8572000A5EC8 /* Instantiatable.swift */; };
+		889CDE3425DD1C12000A5EC8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE3325DD1C12000A5EC8 /* NetworkManager.swift */; };
+		889CDE3825DD1C78000A5EC8 /* DefaultNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE3725DD1C78000A5EC8 /* DefaultNetworkManager.swift */; };
+		889CDE3D25DD1D34000A5EC8 /* URLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE3C25DD1D34000A5EC8 /* URLProvider.swift */; };
+		889CDE4225DD1F78000A5EC8 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 889CDE4125DD1F78000A5EC8 /* KeychainAccess */; };
+		889CDE4625DD201C000A5EC8 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE4525DD201C000A5EC8 /* Helpers.swift */; };
+		889CDE4F25DD2CCE000A5EC8 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE4E25DD2CCE000A5EC8 /* Credentials.swift */; };
+		889CDE5525DD2FC9000A5EC8 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 889CDE5425DD2FC9000A5EC8 /* JWTDecode */; };
+		88BDE75925DD509A007A2FD5 /* ContextProvidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE75825DD509A007A2FD5 /* ContextProvidingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +40,16 @@
 		889CDE0625DC811F000A5EC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		889CDE0825DC811F000A5EC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		889CDE1625DC816B000A5EC8 /* DefaultAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthManager.swift; sourceTree = "<group>"; };
-		889CDE1E25DC82FF000A5EC8 /* KeychainWrapperKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapperKey.swift; sourceTree = "<group>"; };
+		889CDE1E25DC82FF000A5EC8 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		889CDE2125DC8430000A5EC8 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		889CDE2925DC8513000A5EC8 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		889CDE2D25DC8572000A5EC8 /* Instantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instantiatable.swift; sourceTree = "<group>"; };
+		889CDE3325DD1C12000A5EC8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		889CDE3725DD1C78000A5EC8 /* DefaultNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkManager.swift; sourceTree = "<group>"; };
+		889CDE3C25DD1D34000A5EC8 /* URLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProvider.swift; sourceTree = "<group>"; };
+		889CDE4525DD201C000A5EC8 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		889CDE4E25DD2CCE000A5EC8 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		88BDE75825DD509A007A2FD5 /* ContextProvidingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvidingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				889CDE1C25DC82B6000A5EC8 /* SwiftKeychainWrapper in Frameworks */,
+				889CDE5525DD2FC9000A5EC8 /* JWTDecode in Frameworks */,
+				889CDE4225DD1F78000A5EC8 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +89,7 @@
 				889CDE2625DC84BF000A5EC8 /* Protocols */,
 				889CDE0F25DC8129000A5EC8 /* Model */,
 				889CDE1125DC812E000A5EC8 /* Controller */,
+				889CDE4425DD2004000A5EC8 /* Helpers */,
 				889CDDFD25DC811C000A5EC8 /* Main.storyboard */,
 				889CDE0325DC811F000A5EC8 /* Assets.xcassets */,
 				889CDE0525DC811F000A5EC8 /* LaunchScreen.storyboard */,
@@ -87,7 +102,9 @@
 		889CDE0F25DC8129000A5EC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				889CDE1525DC815E000A5EC8 /* AuthManager */,
+				889CDE3B25DD1D2A000A5EC8 /* URLProvider */,
+				889CDE3625DD1C6A000A5EC8 /* NetworkManager */,
+				889CDE1525DC815E000A5EC8 /* Authorization */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,7 +121,7 @@
 		889CDE1225DC8134000A5EC8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				889CDE1E25DC82FF000A5EC8 /* KeychainWrapperKey.swift */,
+				889CDE1E25DC82FF000A5EC8 /* Keychain.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -118,12 +135,13 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		889CDE1525DC815E000A5EC8 /* AuthManager */ = {
+		889CDE1525DC815E000A5EC8 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
 				889CDE1625DC816B000A5EC8 /* DefaultAuthManager.swift */,
+				889CDE4E25DD2CCE000A5EC8 /* Credentials.swift */,
 			);
-			path = AuthManager;
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		889CDE2625DC84BF000A5EC8 /* Protocols */ = {
@@ -131,8 +149,34 @@
 			children = (
 				889CDE2925DC8513000A5EC8 /* AuthManager.swift */,
 				889CDE2D25DC8572000A5EC8 /* Instantiatable.swift */,
+				889CDE3325DD1C12000A5EC8 /* NetworkManager.swift */,
+				88BDE75825DD509A007A2FD5 /* ContextProvidingViewController.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		889CDE3625DD1C6A000A5EC8 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				889CDE3725DD1C78000A5EC8 /* DefaultNetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		889CDE3B25DD1D2A000A5EC8 /* URLProvider */ = {
+			isa = PBXGroup;
+			children = (
+				889CDE3C25DD1D34000A5EC8 /* URLProvider.swift */,
+			);
+			path = URLProvider;
+			sourceTree = "<group>";
+		};
+		889CDE4425DD2004000A5EC8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				889CDE4525DD201C000A5EC8 /* Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +197,8 @@
 			);
 			name = "Parimatch Homework 6";
 			packageProductDependencies = (
-				889CDE1B25DC82B6000A5EC8 /* SwiftKeychainWrapper */,
+				889CDE4125DD1F78000A5EC8 /* KeychainAccess */,
+				889CDE5425DD2FC9000A5EC8 /* JWTDecode */,
 			);
 			productName = "Parimatch Homework 6";
 			productReference = 889CDDF425DC811C000A5EC8 /* Parimatch Homework 6.app */;
@@ -183,7 +228,8 @@
 			);
 			mainGroup = 889CDDEB25DC811C000A5EC8;
 			packageReferences = (
-				889CDE1A25DC82B6000A5EC8 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				889CDE4025DD1F78000A5EC8 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				889CDE5325DD2FC9000A5EC8 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
 			);
 			productRefGroup = 889CDDF525DC811C000A5EC8 /* Products */;
 			projectDirPath = "";
@@ -234,13 +280,19 @@
 			files = (
 				889CDE2225DC8430000A5EC8 /* AuthorizationViewController.swift in Sources */,
 				889CDE2A25DC8513000A5EC8 /* AuthManager.swift in Sources */,
+				889CDE3D25DD1D34000A5EC8 /* URLProvider.swift in Sources */,
+				889CDE3425DD1C12000A5EC8 /* NetworkManager.swift in Sources */,
 				889CDDFC25DC811C000A5EC8 /* HomeViewController.swift in Sources */,
 				889CDDF825DC811C000A5EC8 /* AppDelegate.swift in Sources */,
 				889CDE0225DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld in Sources */,
+				889CDE4F25DD2CCE000A5EC8 /* Credentials.swift in Sources */,
 				889CDE2E25DC8572000A5EC8 /* Instantiatable.swift in Sources */,
-				889CDE1F25DC82FF000A5EC8 /* KeychainWrapperKey.swift in Sources */,
+				88BDE75925DD509A007A2FD5 /* ContextProvidingViewController.swift in Sources */,
+				889CDE1F25DC82FF000A5EC8 /* Keychain.swift in Sources */,
 				889CDDFA25DC811C000A5EC8 /* SceneDelegate.swift in Sources */,
+				889CDE4625DD201C000A5EC8 /* Helpers.swift in Sources */,
 				889CDE1725DC816B000A5EC8 /* DefaultAuthManager.swift in Sources */,
+				889CDE3825DD1C78000A5EC8 /* DefaultNetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,21 +496,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		889CDE1A25DC82B6000A5EC8 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+		889CDE4025DD1F78000A5EC8 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
 				kind = exactVersion;
-				version = 4.0.1;
+				version = 4.2.1;
+			};
+		};
+		889CDE5325DD2FC9000A5EC8 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		889CDE1B25DC82B6000A5EC8 /* SwiftKeychainWrapper */ = {
+		889CDE4125DD1F78000A5EC8 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 889CDE1A25DC82B6000A5EC8 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
-			productName = SwiftKeychainWrapper;
+			package = 889CDE4025DD1F78000A5EC8 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		889CDE5425DD2FC9000A5EC8 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 889CDE5325DD2FC9000A5EC8 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
+			productName = JWTDecode;
 		};
 /* End XCSwiftPackageProductDependency section */
 

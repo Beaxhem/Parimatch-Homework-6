@@ -7,6 +7,4 @@
 
 protocol AuthManager {
     func isLoggedIn() -> Bool
-    
-    func authorize()
 }
