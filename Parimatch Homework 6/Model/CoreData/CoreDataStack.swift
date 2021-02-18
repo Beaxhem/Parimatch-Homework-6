@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CoreDataStack {
+final class CoreDataStack {
 
     static let shared: CoreDataStack = CoreDataStack()
 
@@ -33,7 +33,13 @@ class CoreDataStack {
         container.persistentStoreDescriptions = [description]
 
         container.loadPersistentStores(completionHandler: { (_, error) in
+
+            container.viewContext.automaticallyMergesChangesFromParent = true
+            container.viewContext.mergePolicy = NSMergePolicy(
+                merge: NSMergePolicyType.mergeByPropertyObjectTrumpMergePolicyType)
+
             if let error = error as NSError? {
+
                 // Replace this implementation with code to handle the error appropriately.
                 /*
                  Typical reasons for an error here include:
@@ -54,7 +60,6 @@ class CoreDataStack {
                 try viewContext.save()
             } catch {
                 viewContext.rollback()
-                // Replace this implementation with code to handle the error appropriately.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }

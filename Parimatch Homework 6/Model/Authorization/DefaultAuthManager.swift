@@ -26,7 +26,7 @@ class DefaultAuthManager: AuthManager {
     }
 
     func logout() {
-        // No need to clear cookies because ASWEbAuthenticationSession does it itself
+        // No need to clear cookies, because ASWEbAuthenticationSession does it itself
         try? keychain.remove(KeychainKeys.accessToken.rawValue)
     }
 }
@@ -69,7 +69,8 @@ extension DefaultAuthManager {
         }
 
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: GithubSecretsProvider.clientID)
+            URLQueryItem(name: "client_id", value: GithubSecretsProvider.clientID),
+            URLQueryItem(name: "scope", value: "repo")
         ]
 
         let scheme = "com.beaxhem.Parimatch-Homework-6"
@@ -96,7 +97,7 @@ extension DefaultAuthManager {
 
             completion(code)
         }
-        
+
         session.prefersEphemeralWebBrowserSession = true
         session.presentationContextProvider = context
         session.start()

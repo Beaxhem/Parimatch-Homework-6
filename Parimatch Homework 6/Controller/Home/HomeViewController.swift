@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController {
 
-    let authManager: AuthManager = DefaultAuthManager()
+    @IBOutlet weak var collectionView: UICollectionView?
+
+    private let authManager: AuthManager = DefaultAuthManager()
+
+    private let context: NSManagedObjectContext = CoreDataStack.shared.viewContext
+
+    private var imagesDataSource: ImagesDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +31,44 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         checkIfLoggedIn()
     }
+}
+
+private extension HomeViewController {
+
+    func prepareCollectionView() {
+        collectionView?.register(
+            ImageCollectionViewCell.self,
+            forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
+    }
+
+    func prepareDataSource() {
+        guard let collectionView = collectionView else {
+            print("Collection view is nil")
+            return
+        }
+
+        imagesDataSource = ImagesDataSource(at: context, for: collectionView)
+
+        collectionView.dataSource = imagesDataSource
+        collectionView.delegate = self
+        collectionView.reloadData()
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        guard let image = imagesDataSource?.object(at: indexPath) else {
+            return
+        }
+
+        print(image)
+
+        return
+    }
+}
+
+private extension HomeViewController {
 
     private func checkIfLoggedIn() {
         if !authManager.isLoggedIn() {
@@ -38,9 +83,7 @@ class HomeViewController: UIViewController {
     }
 
     @objc private func logout() {
-        print("Logout")
         authManager.logout()
         checkIfLoggedIn()
     }
-
 }

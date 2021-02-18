@@ -7,7 +7,7 @@
 
 import Foundation
 
-class URLProvider {
+final class URLProvider {
     static let authorizationURL = URLComponents(string: "https://github.com/login/oauth/authorize")
 
     static let accessTokenURL = URLComponents(string: "https://github.com/login/oauth/access_token")
