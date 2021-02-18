@@ -7,7 +7,6 @@
 
 import KeychainAccess
 import AuthenticationServices
-import JWTDecode
 
 class DefaultAuthManager: AuthManager {
 
@@ -19,15 +18,16 @@ class DefaultAuthManager: AuthManager {
         let accessToken = keychain.get(.accessToken)
 
         if let accessToken = accessToken {
-            guard let jwt = try? JWTDecode.decode(jwt: accessToken) else {
-                print("Bad access token")
-                return true
-            }
-            print(jwt)
+            print(accessToken)
             return true
         }
 
         return false
+    }
+
+    func logout() {
+        // No need to clear cookies because ASWEbAuthenticationSession does it itself
+        try? keychain.remove(KeychainKeys.accessToken.rawValue)
     }
 }
 
@@ -93,10 +93,11 @@ extension DefaultAuthManager {
             guard let code = queryItems?.filter({ $0.name == "code" }).first?.value else {
                 return
             }
-            
+
             completion(code)
         }
-
+        
+        session.prefersEphemeralWebBrowserSession = true
         session.presentationContextProvider = context
         session.start()
     }
@@ -107,11 +108,12 @@ extension DefaultAuthManager {
 
         urlComponents.queryItems = [
             .init(name: "client_id", value: GithubSecretsProvider.clientID),
-            .init(name: "secret", value: GithubSecretsProvider.secret),
+            .init(name: "client_secret", value: GithubSecretsProvider.secret),
             .init(name: "code", value: code)
         ]
 
         guard let url = urlComponents.url else { return }
+
         var urlRequest = URLRequest(url: url)
 
         urlRequest.httpMethod = "POST"
@@ -125,11 +127,8 @@ extension DefaultAuthManager {
 
             do {
                 let credentials = try JSONDecoder().decode(Credentials.self, from: data)
-                print(credentials)
                 completion(.success(credentials.accessToken))
             } catch {
-                let error = try? JSONDecoder().decode(CredentialsError.self, from: data)
-                print(error)
                 completion(.failure(AuthError.wrongCredentials))
             }
         }

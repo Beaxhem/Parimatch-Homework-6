@@ -7,4 +7,5 @@
 
 protocol AuthManager {
     func isLoggedIn() -> Bool
+    func logout()
 }

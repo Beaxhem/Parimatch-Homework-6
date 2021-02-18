@@ -11,7 +11,6 @@
 		889CDDFA25DC811C000A5EC8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDDF925DC811C000A5EC8 /* SceneDelegate.swift */; };
 		889CDDFC25DC811C000A5EC8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDDFB25DC811C000A5EC8 /* HomeViewController.swift */; };
 		889CDDFF25DC811C000A5EC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889CDDFD25DC811C000A5EC8 /* Main.storyboard */; };
-		889CDE0225DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE0025DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld */; };
 		889CDE0425DC811F000A5EC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 889CDE0325DC811F000A5EC8 /* Assets.xcassets */; };
 		889CDE0725DC811F000A5EC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 889CDE0525DC811F000A5EC8 /* LaunchScreen.storyboard */; };
 		889CDE1725DC816B000A5EC8 /* DefaultAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE1625DC816B000A5EC8 /* DefaultAuthManager.swift */; };
@@ -27,6 +26,11 @@
 		889CDE4F25DD2CCE000A5EC8 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CDE4E25DD2CCE000A5EC8 /* Credentials.swift */; };
 		889CDE5525DD2FC9000A5EC8 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 889CDE5425DD2FC9000A5EC8 /* JWTDecode */; };
 		88BDE75925DD509A007A2FD5 /* ContextProvidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE75825DD509A007A2FD5 /* ContextProvidingViewController.swift */; };
+		88BDE76025DD521A007A2FD5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE75F25DD521A007A2FD5 /* CoreDataStack.swift */; };
+		88BDE76525DD533A007A2FD5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE76325DD533A007A2FD5 /* Image.swift */; };
+		88BDE76625DD533A007A2FD5 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE76425DD533A007A2FD5 /* Image+CoreDataProperties.swift */; };
+		88BDE77425DD55A6007A2FD5 /* UITableViewFetchedResultsControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE77325DD55A6007A2FD5 /* UITableViewFetchedResultsControllable.swift */; };
+		88BDE77825DD55E5007A2FD5 /* HomeFRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE77725DD55E5007A2FD5 /* HomeFRC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,11 @@
 		889CDE4525DD201C000A5EC8 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		889CDE4E25DD2CCE000A5EC8 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		88BDE75825DD509A007A2FD5 /* ContextProvidingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvidingViewController.swift; sourceTree = "<group>"; };
+		88BDE75F25DD521A007A2FD5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		88BDE76325DD533A007A2FD5 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		88BDE76425DD533A007A2FD5 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88BDE77325DD55A6007A2FD5 /* UITableViewFetchedResultsControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewFetchedResultsControllable.swift; sourceTree = "<group>"; };
+		88BDE77725DD55E5007A2FD5 /* HomeFRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFRC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +103,6 @@
 				889CDE0325DC811F000A5EC8 /* Assets.xcassets */,
 				889CDE0525DC811F000A5EC8 /* LaunchScreen.storyboard */,
 				889CDE0825DC811F000A5EC8 /* Info.plist */,
-				889CDE0025DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld */,
 			);
 			path = "Parimatch Homework 6";
 			sourceTree = "<group>";
@@ -102,6 +110,7 @@
 		889CDE0F25DC8129000A5EC8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				88BDE75E25DD520C007A2FD5 /* CoreData */,
 				889CDE3B25DD1D2A000A5EC8 /* URLProvider */,
 				889CDE3625DD1C6A000A5EC8 /* NetworkManager */,
 				889CDE1525DC815E000A5EC8 /* Authorization */,
@@ -112,8 +121,9 @@
 		889CDE1125DC812E000A5EC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				889CDDFB25DC811C000A5EC8 /* HomeViewController.swift */,
+				88BDE77625DD55D7007A2FD5 /* Home */,
 				889CDE2125DC8430000A5EC8 /* AuthorizationViewController.swift */,
+				88BDE77325DD55A6007A2FD5 /* UITableViewFetchedResultsControllable.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +187,50 @@
 				889CDE4525DD201C000A5EC8 /* Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		88BDE75E25DD520C007A2FD5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				889CDE0025DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld */,
+				88BDE75F25DD521A007A2FD5 /* CoreDataStack.swift */,
+				88BDE76F25DD53B2007A2FD5 /* Generated */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		88BDE76C25DD5352007A2FD5 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				88BDE76325DD533A007A2FD5 /* Image.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		88BDE76D25DD535A007A2FD5 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				88BDE76425DD533A007A2FD5 /* Image+CoreDataProperties.swift */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		88BDE76F25DD53B2007A2FD5 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				88BDE76C25DD5352007A2FD5 /* Implementations */,
+				88BDE76D25DD535A007A2FD5 /* Properties */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		88BDE77625DD55D7007A2FD5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				889CDDFB25DC811C000A5EC8 /* HomeViewController.swift */,
+				88BDE77725DD55E5007A2FD5 /* HomeFRC.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,19 +332,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88BDE77825DD55E5007A2FD5 /* HomeFRC.swift in Sources */,
 				889CDE2225DC8430000A5EC8 /* AuthorizationViewController.swift in Sources */,
 				889CDE2A25DC8513000A5EC8 /* AuthManager.swift in Sources */,
 				889CDE3D25DD1D34000A5EC8 /* URLProvider.swift in Sources */,
 				889CDE3425DD1C12000A5EC8 /* NetworkManager.swift in Sources */,
 				889CDDFC25DC811C000A5EC8 /* HomeViewController.swift in Sources */,
 				889CDDF825DC811C000A5EC8 /* AppDelegate.swift in Sources */,
-				889CDE0225DC811C000A5EC8 /* Parimatch_Homework_6.xcdatamodeld in Sources */,
+				88BDE76525DD533A007A2FD5 /* Image.swift in Sources */,
+				88BDE76025DD521A007A2FD5 /* CoreDataStack.swift in Sources */,
+				88BDE76625DD533A007A2FD5 /* Image+CoreDataProperties.swift in Sources */,
 				889CDE4F25DD2CCE000A5EC8 /* Credentials.swift in Sources */,
 				889CDE2E25DC8572000A5EC8 /* Instantiatable.swift in Sources */,
 				88BDE75925DD509A007A2FD5 /* ContextProvidingViewController.swift in Sources */,
 				889CDE1F25DC82FF000A5EC8 /* Keychain.swift in Sources */,
 				889CDDFA25DC811C000A5EC8 /* SceneDelegate.swift in Sources */,
 				889CDE4625DD201C000A5EC8 /* Helpers.swift in Sources */,
+				88BDE77425DD55A6007A2FD5 /* UITableViewFetchedResultsControllable.swift in Sources */,
 				889CDE1725DC816B000A5EC8 /* DefaultAuthManager.swift in Sources */,
 				889CDE3825DD1C78000A5EC8 /* DefaultNetworkManager.swift in Sources */,
 			);
