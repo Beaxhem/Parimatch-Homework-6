@@ -18,6 +18,8 @@ class HomeViewController: UIViewController {
 
     private var imagesDataSource: ImagesDataSource?
 
+    private let imageRepository: ImagesProvider = DefaultImagesProvider()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,10 +28,20 @@ class HomeViewController: UIViewController {
             style: .plain,
             target: self,
             action: #selector(logout))
+
+        prepareCollectionView()
+        prepareDataSource()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         checkIfLoggedIn()
+
+        imageRepository.getImages { err in
+            guard err == nil else {
+                print(err!)
+                return
+            }
+        }
     }
 }
 
@@ -37,8 +49,10 @@ private extension HomeViewController {
 
     func prepareCollectionView() {
         collectionView?.register(
-            ImageCollectionViewCell.self,
+            UINib(nibName: ImageCollectionViewCell.reuseIdentifier, bundle: nil),
             forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
+
+        collectionView?.contentInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     }
 
     func prepareDataSource() {
@@ -47,7 +61,7 @@ private extension HomeViewController {
             return
         }
 
-        imagesDataSource = ImagesDataSource(at: context, for: collectionView)
+        imagesDataSource = ImagesDataSource(at: context, for: collectionView, displayng: ImageCollectionViewCell.self)
 
         collectionView.dataSource = imagesDataSource
         collectionView.delegate = self
@@ -65,6 +79,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         print(image)
 
         return
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: collectionView.frame.width - 100, height: 200)
     }
 }
 

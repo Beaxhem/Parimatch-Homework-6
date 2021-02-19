@@ -28,7 +28,7 @@ class ImagesDataSource: UICollectionViewFetchedResultsController<Image> {
             try frc.performFetch()
 
         } catch {
-            print("1")
+            print("Error fetching images")
         }
     }
 
@@ -39,7 +39,11 @@ class ImagesDataSource: UICollectionViewFetchedResultsController<Image> {
 
 extension ImagesDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        frc.sections?.count ?? 0
+        guard let section = frc.sections?[section] else {
+            return 0
+        }
+
+        return section.numberOfObjects
     }
 
     func collectionView(
@@ -50,14 +54,18 @@ extension ImagesDataSource: UICollectionViewDataSource {
                 withReuseIdentifier: cellClass.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell else {
             fatalError("Can't deque collection view cell")
         }
+        cell.backgroundColor = .gray
 
         let imageData = frc.object(at: indexPath)
-
         guard let data = imageData.data else {
-            fatalError("Can't get image data from imageData")
+            print("Can't get image data")
+            return cell
         }
 
-        let image = UIImage(data: data)
+        let image = UIImage(data: data)?
+            .resize(
+                to: CGSize(width: collectionView.frame.width - 100,
+                           height: 200))
 
         cell.image = image
 

@@ -97,7 +97,6 @@ class UICollectionViewFetchedResultsController<T: NSFetchRequestResult>: NSObjec
     }
 
     private func cleanupChangeLog () {
-
         sectionChanges.removeAll()
         objectChanges.removeAll()
     }

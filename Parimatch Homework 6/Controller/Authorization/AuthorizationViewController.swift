@@ -22,7 +22,6 @@ class AuthorizationViewController: UIViewController, ASWebAuthenticationPresenta
                 print(err)
                 return
             }
-
             self?.dismiss(animated: true, completion: nil)
         }
     }

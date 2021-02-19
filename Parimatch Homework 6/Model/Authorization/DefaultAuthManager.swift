@@ -28,6 +28,7 @@ class DefaultAuthManager: AuthManager {
     func logout() {
         // No need to clear cookies, because ASWEbAuthenticationSession does it itself
         try? keychain.remove(KeychainKeys.accessToken.rawValue)
+        Image.deleteAll()
     }
 }
 
@@ -115,10 +116,7 @@ extension DefaultAuthManager {
 
         guard let url = urlComponents.url else { return }
 
-        var urlRequest = URLRequest(url: url)
-
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        let urlRequest = URLRequestFactory.makePostRequest(url: url)
 
         networkManager.dataTask(urlRequest: urlRequest) { (data, _, err) in
             guard err == nil, let data = data else {

@@ -11,6 +11,9 @@ class ImagesFRC: NSFetchedResultsController<Image> {
     class func make(at context: NSManagedObjectContext) -> ImagesFRC {
 
         let request: NSFetchRequest<Image> = Image.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(Image.createdOn),
+                                    ascending: false)
+        request.sortDescriptors = [sort]
 
         let result = ImagesFRC(fetchRequest: request,
                              managedObjectContext: context,

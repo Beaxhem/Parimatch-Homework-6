@@ -26,7 +26,7 @@ final class CoreDataStack {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "Universe")
+        let container = NSPersistentContainer(name: "Image")
 
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
@@ -55,11 +55,11 @@ final class CoreDataStack {
     }()
 
     func save () {
-        if viewContext.hasChanges {
+        if container.viewContext.hasChanges {
             do {
-                try viewContext.save()
+                try container.viewContext.save()
             } catch {
-                viewContext.rollback()
+                container.viewContext.rollback()
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }

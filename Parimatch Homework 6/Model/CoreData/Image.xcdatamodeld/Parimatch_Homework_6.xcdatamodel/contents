@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
+    <entity name="Image" representedClassName="Image" syncable="YES">
+        <attribute name="createdOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="data" optional="YES" attributeType="Binary"/>
+        <attribute name="sha" optional="YES" attributeType="String"/>
+        <attribute name="thumbnailData" optional="YES" attributeType="Binary"/>
         <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Image" positionX="-63" positionY="-18" width="128" height="59"/>
+        <element name="Image" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

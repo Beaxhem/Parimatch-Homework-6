@@ -5,10 +5,12 @@
 //  Created by Ilya Senchukov on 17.02.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol NetworkManager {
     typealias DataTaskResult = (Data?, URLResponse?, Error?)
 
     func dataTask(urlRequest: URLRequest, completion: @escaping (DataTaskResult) -> Void)
+
+    func fetchImage(url: URL, completion: @escaping (Result<Data, Error>) -> Void)
 }
