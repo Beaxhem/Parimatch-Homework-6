@@ -19,6 +19,8 @@ class HomeViewController: UIViewController {
     private var imagesDataSource: ImagesDataSource?
 
     private let imageRepository: ImagesProvider = DefaultImagesProvider()
+    
+    private let refresher = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +38,20 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         checkIfLoggedIn()
 
-        imageRepository.getImages { err in
+        fetchImages()
+    }
+}
+
+private extension HomeViewController {
+    @objc func fetchImages() {
+        collectionView?.refreshControl?.beginRefreshing()
+        imageRepository.getImages { [weak self] err in
             guard err == nil else {
                 print(err!)
                 return
             }
+
+            self?.collectionView?.refreshControl?.endRefreshing()
         }
     }
 }
@@ -52,7 +63,9 @@ private extension HomeViewController {
             UINib(nibName: ImageCollectionViewCell.reuseIdentifier, bundle: nil),
             forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
 
-        collectionView?.contentInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
+        prepareRefresher()
     }
 
     func prepareDataSource() {
@@ -67,8 +80,14 @@ private extension HomeViewController {
         collectionView.delegate = self
         collectionView.reloadData()
     }
+
+    func prepareRefresher() {
+        refresher.addTarget(self, action: #selector(fetchImages), for: .valueChanged)
+        collectionView?.refreshControl = refresher
+    }
 }
 
+// MARK: - UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 

@@ -24,7 +24,6 @@ class DefaultImagesProvider: ImagesProvider {
     }
 
     func getImages(completion: ((Error?) -> Void)?) {
-        print("start")
         guard let url = URLProvider.repositoryContentURL?.url else {
             print("Can't get url")
             return
@@ -48,42 +47,46 @@ class DefaultImagesProvider: ImagesProvider {
                 return
             }
 
-            self.syncImages(newImagesData: imagesData)
+            self.syncImages(newImagesData: imagesData, completion: completion)
         }
     }
 
-    private func syncImages(newImagesData: [ImageData]) {
-//            self?.deleteNonexistent(context: context, fetchRequest: oldImages, newData: newImagesData)
+    private func syncImages(newImagesData: [ImageData], completion: ((Error?) -> Void)?) {
 
-        self.insertNew(newData: newImagesData)
-//            
-//            if context.hasChanges {
-//                print("Context has changes")
-//                try? context.save()
-//            }
+        let group = DispatchGroup()
+
+        deleteNonexistent(newData: newImagesData)
+        insertNew(newData: newImagesData, group: group)
+
+        group.notify(queue: .main) {
+            completion?(nil)
+        }
     }
 
     private func insertNew(
-        newData: [ImageData]) {
+        newData: [ImageData],
+        group: DispatchGroup) {
 
         let request: NSFetchRequest = Image.fetchRequest()
         let context = CoreDataStack.shared.container.newBackgroundContext()
 
-        let imagesURL = newData.map { $0.downloadURL }
-//        fetchRequest.predicate = NSPredicate(format: "url IN %@", argumentArray: imagesURL)
+        let imagesURL = newData.map { $0.sha }
+
+        request.predicate = NSPredicate(format: "sha IN %@", imagesURL)
 
         guard let items = try? context.fetch(request) else {
             return
         }
-
-        let existingImageURLs = items.compactMap { $0.url }
-
-        let newImagesData = newData.filter { !existingImageURLs.contains($0.url) }
-
-        let group = DispatchGroup()
-
+        print(items.count)
+        let existingImageURLs = items.compactMap { $0.sha }
+        print("existing shas", existingImageURLs)
+        let newImagesData = newData.filter { !existingImageURLs.contains($0.sha) }
+        print("newImages count", newImagesData.count)
         context.performAndWait {
             for imageData in newImagesData {
+                if imageData.name == ".gitignore" {
+                    continue
+                }
 
                 guard let url = URL(string: imageData.downloadURL) else {
                     print("Bad download url")
@@ -106,7 +109,6 @@ class DefaultImagesProvider: ImagesProvider {
                     case .success(let data):
                         newImage.setValue(data, forKey: "data")
                         newImage.setValue(imageData.sha, forKey: "sha")
-                        newImage.setValue(imageData.downloadURL, forKey: "url")
                         newImage.setValue(Date(), forKey: "createdOn")
                     }
 
@@ -118,26 +120,29 @@ class DefaultImagesProvider: ImagesProvider {
                 }
             }
         }
-
-        group.notify(queue: .main) {
-            context.reset()
-        }
     }
 
     private func deleteNonexistent(
-        context: NSManagedObjectContext,
-        fetchRequest: NSFetchRequest<NSFetchRequestResult>,
         newData: [ImageData]) {
 
-        let imagesURL = newData.map { $0.downloadURL }
+        let context = CoreDataStack.shared.container.newBackgroundContext()
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Image.fetchRequest()
 
-        fetchRequest.predicate = NSPredicate(format: "NOT(%@ in url)", argumentArray: imagesURL)
+        let imagesSHA = newData.map { $0.sha }
+        print("fetched sha", imagesSHA)
+        fetchRequest.predicate = NSPredicate(format: "NOT sha in %@", imagesSHA)
+
+        guard let items = try? context.fetch(fetchRequest) as? [Image] else {
+            return
+        }
+
+        print("items to delete", items)
 
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        batchDeleteRequest.resultType = .resultTypeObjectIDs
 
         do {
-            let batchDeleteResult = try context.execute(batchDeleteRequest)
+            _ = try context.execute(batchDeleteRequest)
+            try context.save()
         } catch {
             print("Can't delete nonexistent images")
         }

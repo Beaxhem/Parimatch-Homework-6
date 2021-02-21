@@ -28,10 +28,6 @@ final class CoreDataStack {
         */
         let container = NSPersistentContainer(name: "Image")
 
-        let description = NSPersistentStoreDescription()
-        description.type = NSInMemoryStoreType
-        container.persistentStoreDescriptions = [description]
-
         container.loadPersistentStores(completionHandler: { (_, error) in
 
             container.viewContext.automaticallyMergesChangesFromParent = true

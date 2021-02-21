@@ -16,14 +16,28 @@ public class Image: NSManagedObject {
 
 extension Image {
     static func deleteAll() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Image")
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
-        do {
-            _ = try CoreDataStack.shared.container.viewContext.execute(batchDeleteRequest)
-            try CoreDataStack.shared.container.viewContext.save()
-        } catch {
-            print("Error deleting all images")
+        let container = CoreDataStack.shared.container
+        let viewContext = container.viewContext
+
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Image.fetchRequest()
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        batchDeleteRequest.resultType = .resultTypeObjectIDs
+
+        viewContext.perform {
+            do {
+                let batchDeleteResult = try viewContext.execute(batchDeleteRequest) as? NSBatchDeleteResult
+
+                if let deletedObjectIDs = batchDeleteResult?.result as? [NSManagedObjectID] {
+                    NSManagedObjectContext.mergeChanges(
+                        fromRemoteContextSave: [NSDeletedObjectsKey: deletedObjectIDs],
+                        into: [viewContext])
+                }
+
+                try viewContext.save()
+            } catch {
+                print("Error deleting all images")
+            }
         }
     }
 }
