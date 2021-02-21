@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FullScreenImageViewController" customModule="Parimatch_Homework_6" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="1aY-UN-Yn4" id="wyB-CV-yOZ"/>
+                <outlet property="imageViewBottomConstraint" destination="pY3-m2-TtV" id="PoP-nO-rrh"/>
+                <outlet property="imageViewLeadingConstraint" destination="BRB-B9-ZBO" id="lE8-ec-dmg"/>
+                <outlet property="imageViewTopConstraint" destination="mN7-kN-JNP" id="8s3-0j-lV9"/>
+                <outlet property="imageViewTrailingConstraint" destination="wyl-cA-NCv" id="I4I-J9-1jd"/>
+                <outlet property="scrollView" destination="Wfg-fR-yFT" id="dY3-zt-rIC"/>
+                <outlet property="view" destination="iN0-l3-epB" id="qzb-Yb-pok"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfg-fR-yFT">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1aY-UN-Yn4">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="1aY-UN-Yn4" firstAttribute="leading" secondItem="Wfg-fR-yFT" secondAttribute="leading" id="BRB-B9-ZBO"/>
+                        <constraint firstItem="1aY-UN-Yn4" firstAttribute="width" secondItem="Wfg-fR-yFT" secondAttribute="width" id="YNK-Xd-wrm"/>
+                        <constraint firstItem="1aY-UN-Yn4" firstAttribute="top" secondItem="Wfg-fR-yFT" secondAttribute="top" id="mN7-kN-JNP"/>
+                        <constraint firstAttribute="bottom" secondItem="1aY-UN-Yn4" secondAttribute="bottom" id="pY3-m2-TtV"/>
+                        <constraint firstAttribute="trailing" secondItem="1aY-UN-Yn4" secondAttribute="trailing" id="wyl-cA-NCv"/>
+                        <constraint firstItem="1aY-UN-Yn4" firstAttribute="height" secondItem="Wfg-fR-yFT" secondAttribute="height" id="zy7-uy-jHg"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="2hQ-ML-IAN"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="AtI-rR-pRe"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="9MP-8Z-Muh"/>
+                    </connections>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="JHj-iJ-WDr"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Wfg-fR-yFT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Mdm-QI-Kqp"/>
+                <constraint firstItem="Wfg-fR-yFT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SSR-mL-hzE"/>
+                <constraint firstAttribute="bottom" secondItem="Wfg-fR-yFT" secondAttribute="bottom" id="TgQ-hL-i01"/>
+                <constraint firstAttribute="trailing" secondItem="Wfg-fR-yFT" secondAttribute="trailing" id="dFy-G0-mqd"/>
+            </constraints>
+            <point key="canvasLocation" x="84" y="55"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

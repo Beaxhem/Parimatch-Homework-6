@@ -27,6 +27,8 @@
 		88A69F6325E2DEF800ABBCB1 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A69F6125E2DEF800ABBCB1 /* Image+CoreDataProperties.swift */; };
 		88A69F7025E2E0E500ABBCB1 /* ImageProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A69F6F25E2E0E500ABBCB1 /* ImageProviderError.swift */; };
 		88A69F7425E2E43100ABBCB1 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A69F7325E2E43100ABBCB1 /* ImageProvider.swift */; };
+		88A69F7825E2EC7500ABBCB1 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A69F7725E2EC7500ABBCB1 /* FullScreenImageViewController.swift */; };
+		88A69F7C25E2EE0300ABBCB1 /* FullScreenImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88A69F7B25E2EE0300ABBCB1 /* FullScreenImageViewController.xib */; };
 		88BDE75925DD509A007A2FD5 /* ContextProvidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE75825DD509A007A2FD5 /* ContextProvidingViewController.swift */; };
 		88BDE76025DD521A007A2FD5 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE75F25DD521A007A2FD5 /* CoreDataStack.swift */; };
 		88BDE77825DD55E5007A2FD5 /* ImagesFRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BDE77725DD55E5007A2FD5 /* ImagesFRC.swift */; };
@@ -66,6 +68,8 @@
 		88A69F6125E2DEF800ABBCB1 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88A69F6F25E2E0E500ABBCB1 /* ImageProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProviderError.swift; sourceTree = "<group>"; };
 		88A69F7325E2E43100ABBCB1 /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
+		88A69F7725E2EC7500ABBCB1 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
+		88A69F7B25E2EE0300ABBCB1 /* FullScreenImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullScreenImageViewController.xib; sourceTree = "<group>"; };
 		88BDE75825DD509A007A2FD5 /* ContextProvidingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextProvidingViewController.swift; sourceTree = "<group>"; };
 		88BDE75F25DD521A007A2FD5 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		88BDE77725DD55E5007A2FD5 /* ImagesFRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesFRC.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 		889CDE1125DC812E000A5EC8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				88A69F7A25E2EDC200ABBCB1 /* FullScreenImageViewController */,
 				88E8D91825DE879600FACF90 /* Authorization */,
 				88BDE77625DD55D7007A2FD5 /* Home */,
 				88E8D91925DE87AB00FACF90 /* UICollectionViewFetchedResultsControllable.swift */,
@@ -212,6 +217,15 @@
 				889CDE4525DD201C000A5EC8 /* Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		88A69F7A25E2EDC200ABBCB1 /* FullScreenImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				88A69F7725E2EC7500ABBCB1 /* FullScreenImageViewController.swift */,
+				88A69F7B25E2EE0300ABBCB1 /* FullScreenImageViewController.xib */,
+			);
+			path = FullScreenImageViewController;
 			sourceTree = "<group>";
 		};
 		88BDE75E25DD520C007A2FD5 /* CoreData */ = {
@@ -361,6 +375,7 @@
 				889CDE0725DC811F000A5EC8 /* LaunchScreen.storyboard in Resources */,
 				889CDE0425DC811F000A5EC8 /* Assets.xcassets in Resources */,
 				88E8D92B25DE8ADC00FACF90 /* ImageCollectionViewCell.xib in Resources */,
+				88A69F7C25E2EE0300ABBCB1 /* FullScreenImageViewController.xib in Resources */,
 				889CDDFF25DC811C000A5EC8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +424,7 @@
 				88BDE75925DD509A007A2FD5 /* ContextProvidingViewController.swift in Sources */,
 				889CDE1F25DC82FF000A5EC8 /* Keychain.swift in Sources */,
 				88E8D92725DE8AC600FACF90 /* ImageCollectionViewCell.swift in Sources */,
+				88A69F7825E2EC7500ABBCB1 /* FullScreenImageViewController.swift in Sources */,
 				88A69F7425E2E43100ABBCB1 /* ImageProvider.swift in Sources */,
 				889CDDFA25DC811C000A5EC8 /* SceneDelegate.swift in Sources */,
 				889CDE4625DD201C000A5EC8 /* Helpers.swift in Sources */,
@@ -577,7 +593,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.beaxhem.Parimatch-Homework-6";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -596,7 +612,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.beaxhem.Parimatch-Homework-6";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

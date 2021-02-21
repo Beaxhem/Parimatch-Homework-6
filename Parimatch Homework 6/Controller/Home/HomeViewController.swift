@@ -91,13 +91,16 @@ private extension HomeViewController {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        guard let image = imagesDataSource?.object(at: indexPath) else {
+        guard let image = imagesDataSource?.object(at: indexPath), let data = image.data else {
+            print("Can't get image data")
             return
         }
 
-        print(image)
+        let fullScreenImageVC = FullScreenImageViewController()
 
-        return
+        fullScreenImageVC.imageData = data
+
+        navigationController?.pushViewController(fullScreenImageVC, animated: true)
     }
 
     func collectionView(

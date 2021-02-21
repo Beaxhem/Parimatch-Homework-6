@@ -20,7 +20,7 @@ class DefaultImagesProvider: ImagesProvider {
     }
 
     func getImages(completion: ((ImageProviderError?) -> Void)?) {
- 
+
         guard let url = URLProvider.repositoryContentURL?.url else {
             completion?(ImageProviderError.badURL(url: "repository content"))
             return
@@ -75,7 +75,7 @@ private extension DefaultImagesProvider {
         guard let imagesData = filterExistingImages(newData: newData, context: context) else {
             return
         }
-        
+
         context.performAndWait {
             for var imageData in imagesData {
                 if imageData.name == ".gitignore" {
@@ -137,7 +137,6 @@ private extension DefaultImagesProvider {
 private extension DefaultImagesProvider {
     func filterExistingImages(newData: [ImageData], context: NSManagedObjectContext) -> [ImageData]? {
         let request: NSFetchRequest = Image.fetchRequest()
-       
 
         let imagesURL = newData.map { $0.sha }
 
@@ -149,7 +148,7 @@ private extension DefaultImagesProvider {
 
         let existingImageURLs = items.compactMap { $0.sha }
         let newImagesData = newData.filter { !existingImageURLs.contains($0.sha) }
-        
+
         return newImagesData
     }
 }
