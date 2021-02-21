@@ -2,7 +2,7 @@
 //  Image+CoreDataProperties.swift
 //  Parimatch Homework 6
 //
-//  Created by Ilya Senchukov on 19.02.2021.
+//  Created by Ilya Senchukov on 21.02.2021.
 //
 //
 
@@ -18,8 +18,6 @@ extension Image {
     @NSManaged public var createdOn: Date?
     @NSManaged public var data: Data?
     @NSManaged public var sha: String?
-    @NSManaged public var url: String?
-    @NSManaged public var thumbnailData: Data?
 
 }
 

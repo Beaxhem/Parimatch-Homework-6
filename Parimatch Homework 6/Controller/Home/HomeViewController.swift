@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     private var imagesDataSource: ImagesDataSource?
 
     private let imageRepository: ImagesProvider = DefaultImagesProvider()
-    
+
     private let refresher = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -110,7 +110,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 }
 
 private extension HomeViewController {
-
     private func checkIfLoggedIn() {
         if !authManager.isLoggedIn() {
             guard let authViewController = AuthorizationViewController.instantiate() else {

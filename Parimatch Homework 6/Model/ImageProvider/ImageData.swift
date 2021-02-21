@@ -9,6 +9,7 @@ import Foundation
 
 struct ImageData: Codable {
     // in case the image was changed, but the name was left unchanged
+    var data: Data?
     var sha: String
     var name: String
     var downloadURL: String

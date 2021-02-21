@@ -8,7 +8,9 @@
 import UIKit
 
 extension UIImage {
-    func resize(to preferredSize: CGSize) -> UIImage? {
+
+    func resized(to preferredSize: CGSize) -> UIImage? {
+
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: preferredSize)
 
         UIGraphicsBeginImageContext(preferredSize)

@@ -9,10 +9,6 @@ import Foundation
 import KeychainAccess
 import CoreData
 
-protocol ImagesProvider {
-    func getImages(completion: ((Error?) -> Void)?)
-}
-
 class DefaultImagesProvider: ImagesProvider {
 
     let networkManager: NetworkManager
@@ -23,35 +19,44 @@ class DefaultImagesProvider: ImagesProvider {
         self.networkManager = networkManager
     }
 
-    func getImages(completion: ((Error?) -> Void)?) {
+    func getImages(completion: ((ImageProviderError?) -> Void)?) {
+ 
         guard let url = URLProvider.repositoryContentURL?.url else {
-            print("Can't get url")
+            completion?(ImageProviderError.badURL(url: "repository content"))
             return
         }
 
         guard let token = keychain.get(.accessToken) else {
-            print("Can't get access token")
+            completion?(.accessTokenUnreachable)
             return
         }
 
         let urlRequest = URLRequestFactory.makeAuthorizedGetRequest(url: url, token: token)
 
-        networkManager.dataTask(urlRequest: urlRequest) { [weak self] (data, _, error) in
-            guard let self = self, error == nil, let data = data else {
-                print("Network error")
+        networkManager.dataTask(urlRequest: urlRequest) { [weak self] (data, res, error) in
+
+            guard let self = self, let res = res as? HTTPURLResponse else {
+                return
+            }
+
+            guard res.statusCode == 200, error == nil, let data = data else {
+                completion?(.networkError)
                 return
             }
 
             guard let imagesData = try? JSONDecoder().decode([ImageData].self, from: data) else {
-                print("Can't decode images data")
+                completion?(.errorDecodingImagesData)
                 return
             }
 
             self.syncImages(newImagesData: imagesData, completion: completion)
         }
     }
+}
 
-    private func syncImages(newImagesData: [ImageData], completion: ((Error?) -> Void)?) {
+private extension DefaultImagesProvider {
+
+    private func syncImages(newImagesData: [ImageData], completion: ((ImageProviderError?) -> Void)?) {
 
         let group = DispatchGroup()
 
@@ -63,27 +68,16 @@ class DefaultImagesProvider: ImagesProvider {
         }
     }
 
-    private func insertNew(
-        newData: [ImageData],
-        group: DispatchGroup) {
+    private func insertNew(newData: [ImageData], group: DispatchGroup) {
 
-        let request: NSFetchRequest = Image.fetchRequest()
         let context = CoreDataStack.shared.container.newBackgroundContext()
 
-        let imagesURL = newData.map { $0.sha }
-
-        request.predicate = NSPredicate(format: "sha IN %@", imagesURL)
-
-        guard let items = try? context.fetch(request) else {
+        guard let imagesData = filterExistingImages(newData: newData, context: context) else {
             return
         }
-        print(items.count)
-        let existingImageURLs = items.compactMap { $0.sha }
-        print("existing shas", existingImageURLs)
-        let newImagesData = newData.filter { !existingImageURLs.contains($0.sha) }
-        print("newImages count", newImagesData.count)
+        
         context.performAndWait {
-            for imageData in newImagesData {
+            for var imageData in imagesData {
                 if imageData.name == ".gitignore" {
                     continue
                 }
@@ -94,22 +88,21 @@ class DefaultImagesProvider: ImagesProvider {
                 }
 
                 group.enter()
-                self.networkManager.fetchImage(url: url) { res in
-                    guard let newImage = NSEntityDescription.insertNewObject(
-                            forEntityName: "Image",
-                            into: context) as? Image else {
-                        return
-                    }
 
+                self.networkManager.fetchImage(url: url) { res in
                     switch res {
                     case .failure(let error):
                         print(error)
-                        context.delete(newImage)
                         return
                     case .success(let data):
-                        newImage.setValue(data, forKey: "data")
-                        newImage.setValue(imageData.sha, forKey: "sha")
-                        newImage.setValue(Date(), forKey: "createdOn")
+                        guard let newImage = NSEntityDescription.insertNewObject(
+                                forEntityName: "Image",
+                                into: context) as? Image else {
+                            return
+                        }
+
+                        imageData.data = data
+                        newImage.update(with: imageData)
                     }
 
                     if context.hasChanges {
@@ -122,21 +115,13 @@ class DefaultImagesProvider: ImagesProvider {
         }
     }
 
-    private func deleteNonexistent(
-        newData: [ImageData]) {
+    private func deleteNonexistent(newData: [ImageData]) {
 
         let context = CoreDataStack.shared.container.newBackgroundContext()
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Image.fetchRequest()
 
         let imagesSHA = newData.map { $0.sha }
-        print("fetched sha", imagesSHA)
         fetchRequest.predicate = NSPredicate(format: "NOT sha in %@", imagesSHA)
-
-        guard let items = try? context.fetch(fetchRequest) as? [Image] else {
-            return
-        }
-
-        print("items to delete", items)
 
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
@@ -146,5 +131,25 @@ class DefaultImagesProvider: ImagesProvider {
         } catch {
             print("Can't delete nonexistent images")
         }
+    }
+}
+
+private extension DefaultImagesProvider {
+    func filterExistingImages(newData: [ImageData], context: NSManagedObjectContext) -> [ImageData]? {
+        let request: NSFetchRequest = Image.fetchRequest()
+       
+
+        let imagesURL = newData.map { $0.sha }
+
+        request.predicate = NSPredicate(format: "sha IN %@", imagesURL)
+
+        guard let items = try? context.fetch(request) else {
+            return nil
+        }
+
+        let existingImageURLs = items.compactMap { $0.sha }
+        let newImagesData = newData.filter { !existingImageURLs.contains($0.sha) }
+        
+        return newImagesData
     }
 }

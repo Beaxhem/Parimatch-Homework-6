@@ -54,6 +54,7 @@ extension ImagesDataSource: UICollectionViewDataSource {
                 withReuseIdentifier: cellClass.reuseIdentifier, for: indexPath) as? ImageCollectionViewCell else {
             fatalError("Can't deque collection view cell")
         }
+
         cell.backgroundColor = .gray
 
         let imageData = frc.object(at: indexPath)
@@ -63,7 +64,7 @@ extension ImagesDataSource: UICollectionViewDataSource {
         }
 
         let image = UIImage(data: data)?
-            .resize(
+            .resized(
                 to: CGSize(width: collectionView.frame.width - 100,
                            height: 200))
 

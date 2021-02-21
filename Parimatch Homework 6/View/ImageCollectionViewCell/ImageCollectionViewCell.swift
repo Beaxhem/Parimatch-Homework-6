@@ -17,10 +17,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-
-        imageView?.contentMode = .scaleAspectFit
-        imageView?.clipsToBounds = true
+    override func prepareForReuse() {
+        imageView?.image = nil
     }
 }

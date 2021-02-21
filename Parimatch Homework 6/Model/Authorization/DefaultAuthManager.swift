@@ -17,8 +17,7 @@ class DefaultAuthManager: AuthManager {
     func isLoggedIn() -> Bool {
         let accessToken = keychain.get(.accessToken)
 
-        if let accessToken = accessToken {
-            print(accessToken)
+        if accessToken != nil {
             return true
         }
 
