@@ -35,7 +35,7 @@ class DefaultImagesProvider: ImagesProvider {
 
         networkManager.dataTask(urlRequest: urlRequest) { [weak self] (data, res, error) in
 
-            guard let self = self, let res = res as? HTTPURLResponse else {
+            guard let self = self, let res = res else {
                 return
             }
 
@@ -89,21 +89,25 @@ private extension DefaultImagesProvider {
 
                 group.enter()
 
-                self.networkManager.fetchImage(url: url) { res in
-                    switch res {
-                    case .failure(let error):
-                        print(error)
-                        return
-                    case .success(let data):
-                        guard let newImage = NSEntityDescription.insertNewObject(
-                                forEntityName: "Image",
-                                into: context) as? Image else {
-                            return
-                        }
+                guard let token = keychain.get(.accessToken) else {
+                    return
+                }
 
-                        imageData.data = data
-                        newImage.update(with: imageData)
+                let urlRequest = URLRequestFactory.makeAuthorizedGetRequest(url: url, token: token)
+
+                self.networkManager.dataTask(urlRequest: urlRequest) { data, res, error in
+
+                    guard error == nil, let res = res, res.statusCode == 200, let data = data else {
+                        return
                     }
+                    guard let newImage = NSEntityDescription.insertNewObject(
+                            forEntityName: "Image",
+                            into: context) as? Image else {
+                        return
+                    }
+
+                    imageData.data = data
+                    newImage.update(with: imageData)
 
                     if context.hasChanges {
                         try? context.save()

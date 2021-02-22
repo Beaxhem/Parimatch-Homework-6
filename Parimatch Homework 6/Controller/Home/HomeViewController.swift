@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, Instantiatable {
 
     @IBOutlet weak var collectionView: UICollectionView?
 
@@ -25,12 +25,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Logout",
-            style: .plain,
-            target: self,
-            action: #selector(logout))
-
+        prepareNavbar()
         prepareCollectionView()
         prepareDataSource()
     }
@@ -56,14 +51,23 @@ private extension HomeViewController {
     }
 }
 
+// MARK: - Setup of collection view
 private extension HomeViewController {
+
+    func prepareNavbar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Logout",
+            style: .plain,
+            target: self,
+            action: #selector(logout))
+
+        title = "Gallery"
+    }
 
     func prepareCollectionView() {
         collectionView?.register(
             UINib(nibName: ImageCollectionViewCell.reuseIdentifier, bundle: nil),
             forCellWithReuseIdentifier: ImageCollectionViewCell.reuseIdentifier)
-
-        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
         prepareRefresher()
     }
@@ -89,6 +93,7 @@ private extension HomeViewController {
 
 // MARK: - UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         guard let image = imagesDataSource?.object(at: indexPath), let data = image.data else {
@@ -108,10 +113,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: collectionView.frame.width - 100, height: 200)
+        return CGSize(
+            width: ImageCellSize.cellWidth(parentWidth: collectionView.frame.width),
+            height: ImageCellSize.cellHeight)
     }
 }
 
+// MARK: - Authorization
 private extension HomeViewController {
     private func checkIfLoggedIn() {
         if !authManager.isLoggedIn() {

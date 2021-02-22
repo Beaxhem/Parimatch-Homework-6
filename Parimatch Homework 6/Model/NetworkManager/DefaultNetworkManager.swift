@@ -20,7 +20,7 @@ class DefaultNetworkManager: NetworkManager {
         let urlSession = getURLSession()
 
         let task = urlSession.dataTask(with: urlRequest) { (data, res, err) in
-            completion((data, res, err))
+            completion((data, res as? HTTPURLResponse, err))
         }
 
         task.resume()

@@ -6,10 +6,23 @@
 //
 
 import UIKit
+import KeychainAccess
+import LocalAuthentication
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+
+    let keychain = Keychain.authorizationService
+
+    var blurEffectView: UIView = {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        return blurEffectView
+    }()
 
     func scene(
         _ scene: UIScene,
@@ -17,8 +30,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions) {
 
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-
-        guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -40,9 +51,61 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        handleLocalAuthentication()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         CoreDataStack.shared.save()
+    }
+}
+
+private extension SceneDelegate {
+
+    func handleLocalAuthentication() {
+        if keychain.get(.accessToken) != nil {
+            guard let rootViewController = window?.rootViewController else {
+                return
+            }
+
+            blurEffectView.frame = rootViewController.view.bounds
+            rootViewController.view.addSubview(blurEffectView)
+
+            let context = LAContext()
+            var error: NSError?
+
+            switch context.biometryType {
+            case .faceID, .touchID:
+                if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                    context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+                                           localizedReason: "Test",
+                                           reply: policyEvaluationHandler)
+
+                }
+            case .none:
+                if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+                    context.evaluatePolicy(.deviceOwnerAuthentication,
+                                           localizedReason: "Test",
+                                           reply: policyEvaluationHandler)
+                }
+            @unknown default:
+                blurEffectView.removeFromSuperview()
+            }
+        }
+    }
+
+    func policyEvaluationHandler(success: Bool, error: Error?) {
+        if !success {
+            self.authenticationFailureHandler()
+        } else {
+            DispatchQueue.main.sync {
+                blurEffectView.removeFromSuperview()
+            }
+        }
+    }
+
+    func authenticationFailureHandler() {
+        DispatchQueue.main.sync {
+            window?.rootViewController = AuthorizationFailureViewController()
+        }
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 protocol NetworkManager {
 
-    typealias DataTaskResult = (Data?, URLResponse?, Error?)
+    typealias DataTaskResult = (Data?, HTTPURLResponse?, Error?)
 
     func dataTask(urlRequest: URLRequest, completion: @escaping (DataTaskResult) -> Void)
 

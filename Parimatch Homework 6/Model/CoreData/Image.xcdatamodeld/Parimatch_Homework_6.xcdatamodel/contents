@@ -3,9 +3,10 @@
     <entity name="Image" representedClassName="Image" syncable="YES">
         <attribute name="createdOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="data" optional="YES" attributeType="Binary"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="sha" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Image" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="Image" positionX="-63" positionY="-18" width="128" height="89"/>
     </elements>
 </model>

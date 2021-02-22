@@ -55,8 +55,6 @@ extension ImagesDataSource: UICollectionViewDataSource {
             fatalError("Can't deque collection view cell")
         }
 
-        cell.backgroundColor = .gray
-
         let imageData = frc.object(at: indexPath)
         guard let data = imageData.data else {
             print("Can't get image data")
@@ -65,10 +63,11 @@ extension ImagesDataSource: UICollectionViewDataSource {
 
         let image = UIImage(data: data)?
             .resized(
-                to: CGSize(width: collectionView.frame.width - 100,
-                           height: 200))
+                to: CGSize(width: ImageCellSize.cellWidth(parentWidth: collectionView.frame.width),
+                           height: ImageCellSize.cellHeight))
 
         cell.image = image
+        cell.title = imageData.name
 
         return cell
     }

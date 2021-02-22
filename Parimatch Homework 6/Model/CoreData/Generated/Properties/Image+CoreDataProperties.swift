@@ -18,6 +18,7 @@ extension Image {
     @NSManaged public var createdOn: Date?
     @NSManaged public var data: Data?
     @NSManaged public var sha: String?
+    @NSManaged public var name: String?
 
 }
 

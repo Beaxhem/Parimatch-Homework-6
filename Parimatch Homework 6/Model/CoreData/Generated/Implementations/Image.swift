@@ -16,6 +16,7 @@ public class Image: NSManagedObject {
 
 extension Image {
     func update(with imageData: ImageData) {
+        self.setValue(imageData.name, forKey: "name")
         self.setValue(imageData.data, forKey: "data")
         self.setValue(imageData.sha, forKey: "sha")
         self.setValue(Date(), forKey: "createdOn")

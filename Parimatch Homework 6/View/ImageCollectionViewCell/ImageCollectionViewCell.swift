@@ -10,6 +10,7 @@ import UIKit
 class ImageCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView?
+    @IBOutlet weak var titleLabel: UILabel?
 
     var image: UIImage? {
         didSet {
@@ -17,7 +18,14 @@ class ImageCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    var title: String? {
+        didSet {
+            titleLabel?.text = title
+        }
+    }
+
     override func prepareForReuse() {
         imageView?.image = nil
+        titleLabel?.text = nil
     }
 }
