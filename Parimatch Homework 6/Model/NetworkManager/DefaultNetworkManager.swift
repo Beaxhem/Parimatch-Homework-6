@@ -26,25 +26,6 @@ class DefaultNetworkManager: NetworkManager {
         task.resume()
     }
 
-    func fetchImage(url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-        let urlSession = getURLSession()
-
-        let urlRequest = URLRequestFactory.makeAuthorizedGetRequest(
-            url: url,
-            token: Keychain.authorizationService.get(.accessToken)!)
-
-        let task = urlSession.dataTask(with: urlRequest) { (data, _, error) in
-            guard error == nil, let data = data else {
-                completion(.failure(error!))
-                return
-            }
-
-            completion(.success(data))
-        }
-
-        task.resume()
-    }
-
     private func getURLSession() -> URLSession {
         let config = URLSessionConfiguration.default
         config.waitsForConnectivity = true

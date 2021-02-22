@@ -14,6 +14,6 @@ final class URLProvider {
     static let accessTokenURL = URLComponents(string: "https://github.com/login/oauth/access_token")
 
     static let repositoryContentURL = URLComponents(
-        string: "https://api.github.com/repos/Parimatch-Homework-6/images/contents")
+        string: "https://api.github.com/repos/Beaxhem/Parimatch-Homework-6-images/contents")
 
 }

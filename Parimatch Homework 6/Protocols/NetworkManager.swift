@@ -12,6 +12,4 @@ protocol NetworkManager {
     typealias DataTaskResult = (Data?, HTTPURLResponse?, Error?)
 
     func dataTask(urlRequest: URLRequest, completion: @escaping (DataTaskResult) -> Void)
-
-    func fetchImage(url: URL, completion: @escaping (Result<Data, Error>) -> Void)
 }
