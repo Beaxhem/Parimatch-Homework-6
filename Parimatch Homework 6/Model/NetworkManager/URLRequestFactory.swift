@@ -26,11 +26,11 @@ final class URLRequestFactory {
     }
 
     static func makeAuthorizedGetRequest(url: URL, token: String) -> URLRequest {
-        var postRequest = makeGetRequest(url: url)
+        var getRequest = makeGetRequest(url: url)
 
-        postRequest.setValue("token " + token, forHTTPHeaderField: "Authorization")
+        getRequest.setValue("token " + token, forHTTPHeaderField: "Authorization")
 
-        return postRequest
+        return getRequest
     }
 
     static func makeAuthorizedPostRequest(url: URL, token: String) -> URLRequest {
